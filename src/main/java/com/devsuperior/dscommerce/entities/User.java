@@ -16,26 +16,25 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tb_user")
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	
+
 	@Column(unique = true)
 	private String email;
 	private String phone;
 	private LocalDate birthDate;
 	private String password;
-	
+
 	@OneToMany(mappedBy = "client")
 	private List<Order> orders = new ArrayList<>();
-	
-	
+
 	public User() {
-		
+
 	}
-	
+
 	public User(Long id, String name, String email, String phone, LocalDate birthDate, String password) {
 		this.id = id;
 		this.name = name;
@@ -43,7 +42,7 @@ public class User {
 		this.phone = phone;
 		this.birthDate = birthDate;
 		this.password = password;
-		
+
 	}
 
 	public Long getId() {
@@ -93,7 +92,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public List<Order> getOrders() {
 		return orders;
 	}
@@ -120,9 +119,5 @@ public class User {
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
-	
-	
 
-	
-	
 }
